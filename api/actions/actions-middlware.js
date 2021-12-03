@@ -1,11 +1,5 @@
 const { get } = require("./actions-model");
 
-const errorHandling = (err, req, res, next) => {
-  res.status(err.status || 500).json({
-    message: err.message,
-  });
-};
-
 const validateReqId = (req, res, next) => {
   get(req.params.id)
     .then((action) => {
@@ -18,6 +12,7 @@ const validateReqId = (req, res, next) => {
     })
     .catch((err) => next(err));
 };
+
 const validateAction = (req, res, next) => {
   if (!req.body.notes || !req.body.description || !req.body.project_id)
     res.status(400).json({
@@ -27,4 +22,4 @@ const validateAction = (req, res, next) => {
   else next();
 };
 
-module.exports = { errorHandling, validateReqId, validateAction };
+module.exports = { validateReqId, validateAction };

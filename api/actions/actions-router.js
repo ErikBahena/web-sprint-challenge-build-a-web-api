@@ -4,12 +4,8 @@ const router = express.Router();
 // database access functions
 const ActionsDAFs = require("./actions-model");
 
-// global middleware
-const {
-  errorHandling,
-  validateReqId,
-  validateAction,
-} = require("./actions-middlware");
+//  middleware
+const { validateReqId, validateAction } = require("./actions-middlware");
 
 // get all actions
 router.get("/", (req, res, next) => {
@@ -48,11 +44,9 @@ router.put("/:id", validateAction, (req, res) => {
 router.delete("/:id", (req, res) => {
   ActionsDAFs.remove(req.params.id)
     .then((count) => {
-      res.status(204);
+      res.status(204).json(count);
     })
     .catch((err) => next(err));
 });
-
-router.use(errorHandling);
 
 module.exports = router;
