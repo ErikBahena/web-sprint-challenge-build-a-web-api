@@ -92,22 +92,22 @@ The description of the structure and extra information about each _resource_ sto
 
 #### Projects
 
-| Field       | Data Type | Metadata                                                                    |
-| ----------- | --------- | --------------------------------------------------------------------------- |
-| id          | number    | do not provide it when creating projects, the database will generate it     |
-| name        | string    | required                                                                    |
-| description | string    | required                                                                    |
-| completed   | boolean   | not required, defaults to false when creating projects                      |
+| Field       | Data Type | Metadata                                                                |
+| ----------- | --------- | ----------------------------------------------------------------------- |
+| id          | number    | do not provide it when creating projects, the database will generate it |
+| name        | string    | required                                                                |
+| description | string    | required                                                                |
+| completed   | boolean   | not required, defaults to false when creating projects                  |
 
 #### Actions
 
-| Field       | Data Type | Metadata                                                                                         |
-| ----------- | --------- | ------------------------------------------------------------------------------------------------ |
-| id          | number    | do not provide it when creating actions, the database will generate it                           |
-| project_id  | number    | required, must be the id of an existing project                                                  |
-| description | string    | required, up to 128 characters long                                                              |
-| notes       | string    | required, no size limit. Used to record additional notes or requirements to complete the action  |
-| completed   | boolean   | not required, defaults to false when creating actions                                            |
+| Field       | Data Type | Metadata                                                                                        |
+| ----------- | --------- | ----------------------------------------------------------------------------------------------- |
+| id          | number    | do not provide it when creating actions, the database will generate it                          |
+| project_id  | number    | required, must be the id of an existing project                                                 |
+| description | string    | required, up to 128 characters long                                                             |
+| notes       | string    | required, no size limit. Used to record additional notes or requirements to complete the action |
+| completed   | boolean   | not required, defaults to false when creating actions                                           |
 
 ### Database Persistence Helpers
 
@@ -147,7 +147,12 @@ We have provided test data for all the resources.
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. The core features of Node.js and Express and why they are useful.
+   Node.js allows us to have javascript outside of the browser. Express provides a framework over backend use of javascript, making it much easier to set up a server and have it listen for requests.
 1. Understand and explain the use of Middleware.
+   Middleware allows certain checks, functions, and actions to be performed between a client request and a server response. Making our code drier and being able to implement already-developed software saves time and effort.
 1. The basic principles of the REST architectural style.
+   Rest Apis consists of a client, a server, and a database. Communication between the client and the server is done through a protocol, normally the HTTP protocol. That protocol consists of requests with status codes and bodies if data is to be received from a request.
 1. Understand and explain the use of Express Routers.
+   Express routers allow you to funnel off all requests to a certain endpoint category, making your code cleaner and easier to understand. Ex: you have endpoints that fall under api/users, and endpoints that fall under api/posts. Creating a router for the users' endpoints and another router for the posts endpoints separates your server into two routers, making your code more maintainable and easier to understand. It is not necessary, just a preferred matter of preference.
 1. Describe tooling used to manually test the correctness of an API.
+   Manual testing is done with an http client: a browser, httpie, postman, insomnia, etc. Making requests and checking responses.
